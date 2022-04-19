@@ -1,0 +1,81 @@
+﻿@model List<Urunler>
+
+<table class="table table-hover">
+    @*<tr>
+        <td>
+            Ürün Adı
+        </td>
+        <td>
+            Stok Durumu
+        </td>
+        <td>
+            Fiyatı
+        </td>
+        <td>
+            Fotoğraf
+        </td>
+        <td>
+            İşlemler
+        </td>
+    </tr>*@
+
+    @foreach (var item in Model)
+    {        
+        <tr>
+            <td>
+                @if (item.FotoYol == null)
+                {
+                    <img src="~/Images/no-photo.png" width="100" height="100" />
+                }
+                else
+                {
+                    <img src="@Html.DisplayFor(modelItem => item.FotoYol)" width="100" height="100" />
+                }  
+            </td>
+        </tr>
+        
+        
+        
+        @*<tr>
+            <td>
+                @item.UrunAdi
+            </td>
+            <td>
+                @item.StokDurumu
+            </td>
+            <td>
+                @item.UrunFiyati
+            </td>
+            <td>
+                @if (item.FotoYol == null)
+                {
+                    <img src="~/Images/no-photo.png" width="100" height="100" />
+                }
+                else
+                {
+                    <img id="fotodiv" src="@Html.DisplayFor(modelItem => item.FotoYol)" width="100" height="100" />
+                }                
+                
+            </td>
+            <td>
+
+                @using (Ajax.BeginForm("SepeteAt", "Home", new AjaxOptions { OnSuccess = "Cevap" }))
+                {
+                    <input type="hidden" name="hdnUrunID" value="@item.UrunID" />
+                    <input type="submit" name="name" value="Sepete At" class="btn btn-primary" />
+                }
+            </td>
+        </tr>*@
+    }
+
+</table>
+
+
+<script>
+
+    function Cevap(response) {
+
+        $("#spnCount").html(response);
+
+    }
+</script>

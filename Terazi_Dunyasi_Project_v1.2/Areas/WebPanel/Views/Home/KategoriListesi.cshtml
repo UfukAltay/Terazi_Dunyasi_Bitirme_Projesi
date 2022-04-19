@@ -1,0 +1,10 @@
+﻿@model List<Kategoriler>
+
+<ul class="nav navbar-nav">
+        @foreach (var item in Model)
+        {
+            <li>
+                <a href="@Url.Action("Index", "Kategoriler", new { id= item.KategoriID })">@item.KategoriAdi</a>
+            </li>
+        }
+    </ul>

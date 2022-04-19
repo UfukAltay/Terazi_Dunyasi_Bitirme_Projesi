@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link href="~/Styles/reset.css" rel="stylesheet" />
+    <link href="~/Styles/YonetimMain.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+
+        <div class="row row1 logo">
+            <div class="col1 col-lg-2 col-md-3">
+                <a href="~/WebPanel/Home/Index" target="_blank"><img src="~/Images/terazi_dunyasi_logo.png" alt="Terazi_Dunyasi_Logo" /></a>
+            </div>
+
+            <div class="col2 col-lg-10 col-md-9">
+                <h1>Yönetim Paneli</h1>
+            </div>
+        </div>
+
+        <div class="row row2">
+            <div class="col1 col-lg-2">
+                <div>
+                    <ul class="nav navbar navbar-nav">
+                        <li>
+                            <a class="btn-sm" href="@Url.Action("Index","Home")">Yönetim Ana Sayfa</a>
+                        </li>
+                        <li>
+                            <a class="btn-sm" href="@Url.Action("Index","KategoriYonet")">Kategori Yönetimi</a>
+                        </li>
+                        <li>
+                            <a class="btn-xs" href="@Url.Action("Index","AltKategoriYonet")">Alt Kategori Yönetimi</a>
+                        </li>
+                        <li>
+                            <a class="btn-sm" href="@Url.Action("Index","UrunYonet")">Ürün Yönetimi</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col2 col-lg-10">
+                @RenderBody()
+            </div>
+            @RenderSection("scripts",required:false)
+
+        </div>
+
+    </div>
+
+</body>
+</html>

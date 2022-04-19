@@ -1,0 +1,23 @@
+﻿@model List<Kargolar>
+@{
+    ViewBag.Title = "Kargo";
+    Layout = "~/Areas/WebPanel/Views/Shared/_WebSablon.cshtml";
+}
+
+<h2>Siparişlerinizi göndereceğimiz kargoyu seçiniz</h2>
+
+@using (Html.BeginForm("Ode", "AlisVeris"))
+{
+    <div class="form-group">
+        <select class="form-control" name="ddlKargo">
+            @foreach (var item in Model)
+            {
+                <option value="@item.KargoID">@item.KargoSirketAdi</option>
+            }
+        </select>
+        <br />
+
+        <br />
+        <input type="submit" class="form-control btn btn-block btn-success" name="name" value="AlışVerişi Tamamla" />
+    </div>
+}

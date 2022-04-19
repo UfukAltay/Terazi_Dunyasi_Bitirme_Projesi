@@ -1,0 +1,33 @@
+﻿@model Uyeler
+
+@{
+    ViewBag.Title = "YeniUyelik";
+    Layout = "~/Areas/WebPanel/Views/Shared/_WebSablon.cshtml";
+}
+
+<h2>YeniUyelik</h2>
+
+@using (Html.BeginForm("YeniUyelik", "Account", FormMethod.Post, new { enctype = "multipart/form-data", id = "formKapsayici" }))
+{
+    <div id="divSol">
+        @Html.LabelFor(i => Model.Ad)<br /><br />
+        @Html.LabelFor(i => Model.Soyad)<br /><br />
+        @Html.LabelFor(i => Model.EPosta)<br /><br />
+        @Html.LabelFor(i => Model.Sifre)<br /><br />        
+        @Html.Label("Üyelik Tarihiniz")<br /><br />
+        @Html.Label("Profil Resminiz")<br /><br />
+    </div>
+    <div id="divSag">
+        : @Html.TextBoxFor(i => Model.Ad)<br /><br />
+        : @Html.TextBoxFor(i => Model.Soyad)<br /><br />
+        : @Html.TextBoxFor(i => Model.EPosta)<br /><br />
+        : @Html.TextBoxFor(i => Model.Sifre)<br /><br />
+        : @Html.Label(DateTime.Now.ToString())<br /><br />
+        
+        <input type="file" id="inputFile" name="file" /> <br /><br />
+
+    </div>
+    <input type="submit" value="Üye Ol" id="btnUyeOl" />
+    
+    @Html.ValidationSummary()
+}

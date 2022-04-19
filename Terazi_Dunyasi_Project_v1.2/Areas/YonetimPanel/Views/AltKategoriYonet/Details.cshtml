@@ -1,0 +1,51 @@
+﻿@model Terazi_Dunyasi_Project_v12.AltKategoriler
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/YonetimPanel/Views/Shared/_YonetimSablon.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AltKategoriler</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AltKategoriAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AltKategoriAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AltKategoriAciklama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AltKategoriAciklama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FotoYol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FotoYol)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kategoriler.KategoriAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategoriler.KategoriAdi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AltKategoriID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

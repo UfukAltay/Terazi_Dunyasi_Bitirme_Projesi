@@ -1,0 +1,75 @@
+﻿@model Terazi_Dunyasi_Project_v12.Urunler
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/YonetimPanel/Views/Shared/_YonetimSablon.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Urunler</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UrunAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrunAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UrunFiyati)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrunFiyati)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StokDurumu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StokDurumu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UrunAciklama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrunAciklama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FotoYol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FotoYol)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AltKategoriler.AltKategoriAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AltKategoriler.AltKategoriAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kategoriler.KategoriAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategoriler.KategoriAdi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UrunID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

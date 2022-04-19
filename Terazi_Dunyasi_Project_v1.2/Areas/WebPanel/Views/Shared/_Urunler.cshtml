@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link href="~/Styles/reset.css" rel="stylesheet" />
+    <link href="~/Styles/WebMain.css" rel="stylesheet" />
+    <link href="~/Styles/Uyelik.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/jssor.slider.mini.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+</head>
+
+<body>
+
+    <div class="sepetheader page-header">
+        @if (Session["uyeId"] == null)
+        {
+        <ul>
+            <li style="display:inline-block">@Html.ActionLink("Üye Girişi", "UyeGiris", "Account")</li>&nbsp;&nbsp;&nbsp;
+            <li style="display:inline-block">@Html.ActionLink("Yeni Üyelik", "YeniUyelik", "Account")</li> &nbsp;&nbsp;&nbsp;
+            <li style="display:inline-block">
+                <a href="@Url.Action("Index","Sepet")">
+                    Sepetinizde <span id="spnCount">@Html.Action("SepetCount", "Home")</span> adet ürün var
+                </a>
+            </li>
+        </ul>
+        }
+
+        else
+        {
+        <ul>
+            <li class="li" style="display:inline-block">Hoşgeldiniz @Html.Label("", Session["UyeAdi"].ToString()) </li>&nbsp;&nbsp;&nbsp;
+            <li style="display:inline-block">
+                <a href="@Url.Action("Index","Sepet")">
+                    Sepetinizde <span id="spnCount">@Html.Action("SepetCount", "Home")</span> adet ürün var
+                </a>&nbsp;&nbsp;&nbsp;
+            </li>
+            <li style="display:inline-block">@Html.ActionLink("Çıkış", "UyeCikis", "Account")</li>
+        </ul>
+        }
+    </div>
+
+    <div class="row row1 page-header">
+
+        <div class="col1 col-lg-2 col-md-3">
+            <a href="~/WebPanel/Home/Index"><img src="~/Images/terazi_dunyasi_logo.png" alt="Terazi_Dunyasi_Logo" /></a>
+        </div>
+
+        <div class="col2 col-lg-10 col-md-9">
+            @Html.Action("KategoriListesi", "Home")
+        </div>
+    </div>
+
+    <div class="row row2 col-lg-2">
+
+        @*Bu kısma, tıklanılan kategoriye ait alt kategoriler gelecek*@
+
+        @Html.Action("AltKategoriListesi", "Home")
+    </div>
+
+    <div class="row row2 col-lg-10">
+        @RenderBody()
+    </div>
+
+    <div class="row row3 panel-footer">
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Terazi Dünyası</p>
+        </footer>
+    </div>
+
+</body>
+</html>

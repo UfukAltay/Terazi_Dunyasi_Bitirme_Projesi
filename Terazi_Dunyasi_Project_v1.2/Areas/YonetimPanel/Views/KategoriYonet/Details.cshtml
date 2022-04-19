@@ -1,0 +1,43 @@
+﻿@model Terazi_Dunyasi_Project_v12.Kategoriler
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/YonetimPanel/Views/Shared/_YonetimSablon.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Kategoriler</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KategoriAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KategoriAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KategoriAciklama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KategoriAciklama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FotoYol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FotoYol)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.KategoriID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

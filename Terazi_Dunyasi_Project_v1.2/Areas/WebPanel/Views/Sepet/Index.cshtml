@@ -1,0 +1,95 @@
+﻿@model List<Sepet>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/WebPanel/Views/Shared/_WebSablon.cshtml";
+}
+
+@{
+    TDPEntities db = new TDPEntities();
+
+}
+<h2>Sepetiniz</h2>
+
+<style>
+    .form-inline {
+        display: inline-block;
+    }
+</style>
+
+<table class="table table-hover">
+    <tr>
+        <td>Ürün Adı</td>
+        <td>Fiyatı</td>
+        <td>Toplam Fiyatı</td>
+        <td>Adet</td>
+        <td>İşlem</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @db.Urunlers.FirstOrDefault(c => c.UrunID == item.UrunID).UrunAdi
+            </td>
+            <td>
+                @{
+        decimal fiyat = db.Urunlers.FirstOrDefault(c => c.UrunID == item.UrunID).UrunFiyati.Value;
+        decimal toplamFiyat = fiyat * item.Adet;
+                }
+                @fiyat
+            </td>
+            <td>
+                @toplamFiyat
+            </td>
+            <td>
+                <input class="txtUrunSayisi" urunid="@item.UrunID" style="width:50px; text-align:center;" type="number" value="@item.Adet" />
+            </td>
+            <td class="">
+
+                @using (Ajax.BeginForm("SepetGuncelle", "Sepet", new AjaxOptions { OnSuccess = "fncBasarili" }, new { @class = "form-inline" }))
+                {
+                    <input type="hidden" name="hdnUrunID" value="@item.UrunID" />
+                    <input type="hidden" id="hdnAdet_@item.UrunID" name="hdnAdet" value="@item.Adet" />
+
+                    <input type="submit" class="btn btn-success" name="name" value="Güncelle" />
+                }
+
+
+                @using (Html.BeginForm("SepetSil", "Sepet", FormMethod.Post, new { @class = "form-inline" }))
+                {
+                    <input type="hidden" name="hdnUrunID" value="@item.UrunID" />
+                    <input type="submit" class="btn btn-danger" name="name" value="Sil" />
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+<div>
+    <a href="@Url.Action("Login", "Account")" class="btn btn-success btn-block">AlışVerişi Tamamla</a>
+    <br />
+    <a href="@Url.Action("TumUrunler","Urunler")" class="btn btn-primary btn-block">Alışverişe Devam Et</a>
+</div>
+
+<script>
+
+    $(".txtUrunSayisi").change(function () {
+
+        var value = $(this).val();
+        if (value < 1) {
+            $(this).val(1);
+        }
+        var urunID = $(this).attr("UrunID");
+
+        $("#hdnAdet_" + urunID).val(value);
+
+
+    });
+
+
+    function fncBasarili(response) {
+
+        $("#spnCount").html(response);
+
+    }
+</script>

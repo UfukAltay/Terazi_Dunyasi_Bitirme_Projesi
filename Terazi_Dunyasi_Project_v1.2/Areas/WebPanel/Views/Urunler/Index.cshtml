@@ -1,0 +1,9 @@
+﻿
+@model List<Urunler>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/WebPanel/Views/Shared/_WebSablon.cshtml";
+}
+
+@Html.Partial("UrunKutusu", Model)

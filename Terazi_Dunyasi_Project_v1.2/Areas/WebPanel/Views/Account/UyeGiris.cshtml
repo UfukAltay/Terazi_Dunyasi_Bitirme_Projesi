@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Uye Girişi";
+    Layout = "~/Areas/WebPanel/Views/Shared/_WebSablon.cshtml";
+}
+
+<h2>Üye Girişi</h2>
+
+@using (Ajax.BeginForm("UyeGirisi", "Account", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "divSonuc" }, new { id = "formKapsayici" }))
+{
+    <div id="divSol">
+        @Html.Label("E-Posta Adresiniz")<br />
+        @Html.Label("Şifreniz")
+    </div>
+    <div id="divSag">
+        : @Html.TextBox("txtPosta")<br />
+        : @Html.Password("pswSifre")<br />&nbsp;
+        <input type="submit" value="Giriş Yap" id="btnGirisYap" />
+    </div>
+    <div class="temizle"></div>
+    
+    <div id="divSonuc"></div>
+}

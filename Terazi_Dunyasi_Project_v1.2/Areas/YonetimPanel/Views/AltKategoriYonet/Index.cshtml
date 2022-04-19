@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Terazi_Dunyasi_Project_v12.AltKategoriler>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/YonetimPanel/Views/Shared/_YonetimSablon.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AltKategoriAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AltKategoriAciklama)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FotoYol)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kategoriler.KategoriAdi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AltKategoriAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AltKategoriAciklama)
+        </td>
+        <td>
+            @if (item.FotoYol == null)
+            {
+                <img src="~/Images/no-photo.png" width="100" height="100" />
+            }
+            else
+            {
+                <img src="@Html.DisplayFor(modelItem => item.FotoYol)" width="100" height="100" />
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kategoriler.KategoriAdi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AltKategoriID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AltKategoriID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AltKategoriID })
+        </td>
+    </tr>
+}
+
+</table>

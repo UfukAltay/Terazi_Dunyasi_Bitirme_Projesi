@@ -1,0 +1,36 @@
+﻿#formKapsayici {
+            box-shadow: 0 0 5px gray;
+            padding: 25px;
+            min-height: 400px;
+        }
+
+        #divSol, #divSag {
+            float: left;
+            margin-left: 25px;
+        }
+
+            #divSol *, #divSag * {
+                margin-top: 15px;
+            }
+
+        input[type="text"] {
+            width: 250px;
+        }
+        
+        input[type="password"] {
+            width: 250px;
+        }       
+        
+        .temizle{
+            clear:both;
+        }
+
+        #btnUyeOl {
+            
+            clear:both;
+            display: inline-block;
+            margin-left: 132px;
+            
+        }
+        
+        
